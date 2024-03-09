@@ -26,6 +26,7 @@ def histogram():
     # - np.random.randn generates 'count_of_points' samples from a standard normal distribution.
     # - Each sample is then scaled by 15 (to increase the spread) and shifted by 100 (to center the distribution around 100).
     x = 100 + 15 * np.random.randn(437)
+    plt.title("Histogram Plot")
     # Create a histogram of the random data using hist() function
     # - The first argument is the data array.
     # - The second argument specifies the number of bins, dynamically set by the input slider's current value.
@@ -34,7 +35,9 @@ def histogram():
 
 @render.plot(alt="A scatterplot showing random distribution")
 def scatterplot():
-    np.random.seed(19680801)
-    x = np.random.normal(size=100)
-    y = np.random.normal(size=100)
-    sns.scatterplot(x=x, y=y, color='blue')
+    np.random.seed(435)
+    num_points = input.number_of_bins()
+    x = np.random.rand(num_points)
+    y = np.random.rand(num_points)
+    plt.scatter(x, y)
+    plt.title("Random Scatter Plot")
